@@ -1,57 +1,54 @@
 # homelab-runbook
 
-A collection of commands I've gathered running my own homelab and AV installs — door and gate control, Savant, networking, 3D printing, and a few automations. Everything site-specific has been pulled out and swapped for placeholders like <UNIFI_GATEWAY_IP> or <API_TOKEN>, so nothing here points at a real network. These aren't copy-paste-and-go — fill in your own values and test before running anything against live gear.
+Battle-tested commands for running a homelab and a high-end AV install — UniFi Access door control, Savant, networking, 3D printing, and home automation, all in one place.
 
-## Contents
+<p align="left">
+  <a href="https://github.com/Sparky-Venture-Labs/homelab-runbook/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Sparky-Venture-Labs/homelab-runbook" alt="License: MIT"></a>
+  <a href="https://github.com/Sparky-Venture-Labs/homelab-runbook/stargazers"><img src="https://img.shields.io/github/stars/Sparky-Venture-Labs/homelab-runbook?style=social" alt="Stars"></a>
+  <a href="https://github.com/Sparky-Venture-Labs/homelab-runbook/commits/main"><img src="https://img.shields.io/github/last-commit/Sparky-Venture-Labs/homelab-runbook" alt="Last commit"></a>
+  <a href="https://github.com/Sparky-Venture-Labs/homelab-runbook/issues"><img src="https://img.shields.io/github/issues/Sparky-Venture-Labs/homelab-runbook" alt="Issues"></a>
+</p>
 
-### [UniFi/](unifi/README.md) — 34 entries
+These are the actual commands I reach for on my own gear, collected over years of real installs. Everything site-specific has been pulled out and replaced with placeholders like `<UNIFI_GATEWAY_IP>` and `<API_TOKEN>`, so nothing here points at a live network. **They're a starting point, not copy-paste-and-go** — drop in your own values and test before you run anything against production hardware.
 
-Door and gate control, the Dream Machine, cameras, and the scripts that drive them.
+## How to use this
 
-- [Access Doors & Gates](unifi/access-doors-gates.md) (20)
-- [Dream Machine (UDM)](unifi/dream-machine.md) (8)
-- [Cameras & Doorbell](unifi/cameras-doorbell.md) (3)
-- [Full Scripts](unifi/scripts.md) (3)
+1. Browse to the section you need below.
+2. Each topic file lists commands with a short note on what they do.
+3. Replace every `<PLACEHOLDER>` with your own value.
+4. Test on a non-critical device first.
 
-### [Savant/](savant/README.md) — 25 entries
+## What's inside
 
-Host and processor work — sclibridge, LaunchDaemons, blueprints, and device integrations.
+### [UniFi/](unifi/README.md) — 34 commands
+Door and gate control via the UniFi Access API, the Dream Machine, cameras, and the scripts that drive them.
 
-- [Host & LaunchDaemons](savant/host-launchdaemons.md) (11)
-- [Video / go2rtc](savant/video-go2rtc.md) (2)
-- [sclibridge & States](savant/sclibridge-states.md) (3)
-- [Blueprints & XML Profiles](savant/blueprints-profiles.md) (3)
-- [Device Integrations](savant/integrations.md) (5)
-- [Misc](savant/misc.md) (1)
+- [Access Doors & Gates](unifi/access-doors-gates.md) · [Dream Machine (UDM)](unifi/dream-machine.md) · [Cameras & Doorbell](unifi/cameras-doorbell.md) · [Full Scripts](unifi/scripts.md)
 
-### [Network/](network/README.md) — 17 entries
+### [Savant/](savant/README.md) — 25 commands
+Host and processor work — `sclibridge`, LaunchDaemons, blueprints, and third-party device integrations.
 
-Networking one-liners I keep reaching for, plus the runbook app's own commands.
+- [Host & LaunchDaemons](savant/host-launchdaemons.md) · [sclibridge & States](savant/sclibridge-states.md) · [Blueprints & XML Profiles](savant/blueprints-profiles.md) · [Device Integrations](savant/integrations.md) · [Video / go2rtc](savant/video-go2rtc.md)
 
-- [DNS & ARP](network/dns-arp.md) (5)
-- [Connectivity Tests](network/connectivity.md) (6)
-- [SSH & File Transfer](network/ssh-transfer.md) (4)
-- [VPN & WireGuard](network/vpn-wireguard.md) (1)
-- [Runbook App](network/runbook-app.md) (1)
+### [Network/](network/README.md) — 17 commands
+The networking one-liners I keep reaching for — DNS, ARP, connectivity checks, SSH, and VPN.
 
-### [3D Printing/](printing/README.md) — 20 entries
+- [DNS & ARP](network/dns-arp.md) · [Connectivity Tests](network/connectivity.md) · [SSH & File Transfer](network/ssh-transfer.md) · [VPN & WireGuard](network/vpn-wireguard.md) · [Runbook App](network/runbook-app.md)
 
-Creality K1C and K2 Plus settings, slicer profiles, and fixes for the usual problems.
+### [3D Printing/](printing/README.md) — 20 commands
+Creality K1C and K2 Plus settings, OrcaSlicer profiles, and fixes for the usual print problems.
 
-- [Temperatures](printing/temperatures.md) (5)
-- [Slicer Profiles](printing/profiles.md) (8)
-- [Retraction & Stringing](printing/retraction-stringing.md) (5)
-- [Filament Care](printing/filament-care.md) (2)
+- [Temperatures](printing/temperatures.md) · [Slicer Profiles](printing/profiles.md) · [Retraction & Stringing](printing/retraction-stringing.md) · [Filament Care](printing/filament-care.md)
 
-### [Automation/](automation/README.md) — 15 entries
+### [Automation/](automation/README.md) — 15 commands
+Home automation glue — Sonos chimes, the doorbell bridge, the SIP intercom, and video.
 
-Home automation glue — Sonos, the doorbell bridge, the intercom, and video.
+- [Doorbell & Intercom](automation/doorbell-intercom.md) · [Sonos Chimes](automation/sonos.md)
 
-- [Doorbell & Intercom](automation/doorbell-intercom.md) (10)
-- [Sonos Chimes](automation/sonos.md) (5)
+## Contributing
 
----
+Found a fix or have a sanitized command worth adding? Open an issue or a pull request. Keep all real IPs, tokens, hostnames, and identifiers out — use placeholders.
 
-111 entries total.
+## License
 
-Sanitized for public sharing. Replace every placeholder with your own values before use.
+Distributed under the MIT License. See [LICENSE](LICENSE) for details.
