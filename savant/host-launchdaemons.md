@@ -253,7 +253,7 @@ import urllib.error
 
 # Config
 UNIFI_HOST = "https://<SAVANT_HOST_IP>:12445"
-API_TOKEN = "REDACTED_ROTATED_TOKEN"
+API_TOKEN = "YOUR_UNIFI_API_TOKEN"
 SCLI = "/Users/Shared/Savant/Applications/<PROFILE>/sclibridge"
 
 def run_curl(url, method="GET", data=None, headers=None):

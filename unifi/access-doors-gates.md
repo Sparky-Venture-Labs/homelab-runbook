@@ -121,7 +121,7 @@ curl -k -sS -X GET "$UNIFI_HOST/api/v1/developer/doors/$SERVICE_GATE_ID" \
 
 ```bash
 curl -k -X GET "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json"
 ```
@@ -132,7 +132,7 @@ curl -k -X GET "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors" \
 
 ```bash
 curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_ID>/unlock" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{"actor_name": "Savant Main Gate"}'
@@ -144,7 +144,7 @@ curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_
 
 ```bash
 curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_ID>/unlock" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{"actor_name": "Savant Service Gate"}'
@@ -157,14 +157,14 @@ curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_
 ```bash
 # Hold Main Gate open indefinitely:
 curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_ID>/lock_rule" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{"type":"keep_unlock"}'
 
 # Hold Service Gate open indefinitely:
 curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_ID>/lock_rule" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{"type":"keep_unlock"}'
@@ -177,14 +177,14 @@ curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_
 ```bash
 # Reset Main Gate to normal schedule:
 curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_ID>/lock_rule" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{"type":"reset"}'
 
 # Reset Service Gate to normal schedule:
 curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_ID>/lock_rule" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{"type":"reset"}'
@@ -197,7 +197,7 @@ curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_
 ```bash
 # Register webhook for doorbell/intercom press events:
 curl -k -sS -X POST "https://<SAVANT_HOST_IP>:12445/api/v1/developer/webhooks" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{
@@ -207,7 +207,7 @@ curl -k -sS -X POST "https://<SAVANT_HOST_IP>:12445/api/v1/developer/webhooks" \
 
 # List existing webhooks:
 curl -k -sS -X GET "https://<SAVANT_HOST_IP>:12445/api/v1/developer/webhooks" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN"
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN"
 ```
 
 ---
@@ -219,7 +219,7 @@ curl -k -sS -X GET "https://<SAVANT_HOST_IP>:12445/api/v1/developer/webhooks" \
 #!/bin/bash
 
 UNIFI_HOST="https://<SAVANT_HOST_IP>:12445"
-API_TOKEN="REDACTED_ROTATED_TOKEN"
+API_TOKEN="YOUR_UNIFI_API_TOKEN"
 MAIN_ID="<DOOR_ID>"
 SERVICE_ID="<DOOR_ID>"
 
@@ -248,7 +248,7 @@ door_status "SERVICE_GATE" "$SERVICE_ID"
 cat > /Users/Shared/unifi-main-gate-open.sh << 'EOF'
 #!/bin/bash
 UNIFI_HOST="https://<SAVANT_HOST_IP>:12445"
-API_TOKEN="REDACTED_ROTATED_TOKEN"
+API_TOKEN="YOUR_UNIFI_API_TOKEN"
 DOOR_ID="<DOOR_ID>"
 curl -k -sS -X PUT "${UNIFI_HOST}/api/v1/developer/doors/${DOOR_ID}/unlock" \
   -H "Authorization: Bearer ${API_TOKEN}" \
@@ -271,7 +271,7 @@ chmod +x /Users/Shared/unifi-main-gate-open.sh
 cat > /Users/Shared/unifi-service-gate-open.sh << 'EOF'
 #!/bin/bash
 UNIFI_HOST="https://<SAVANT_HOST_IP>:12445"
-API_TOKEN="REDACTED_ROTATED_TOKEN"
+API_TOKEN="YOUR_UNIFI_API_TOKEN"
 DOOR_ID="<DOOR_ID>"
 curl -k -sS -X PUT "${UNIFI_HOST}/api/v1/developer/doors/${DOOR_ID}/unlock" \
   -H "Authorization: Bearer ${API_TOKEN}" \
@@ -292,7 +292,7 @@ chmod +x /Users/Shared/unifi-service-gate-open.sh
 cat > /Users/Shared/unifi-main-gate-holdopen.sh << 'EOF'
 #!/bin/bash
 UNIFI_HOST="https://<SAVANT_HOST_IP>:12445"
-API_TOKEN="REDACTED_ROTATED_TOKEN"
+API_TOKEN="YOUR_UNIFI_API_TOKEN"
 DOOR_ID="<DOOR_ID>"
 SCLIBRIDGE="/Users/Shared/Savant/Applications/<PROFILE>/sclibridge"
 curl -k -sS -X PUT "${UNIFI_HOST}/api/v1/developer/doors/${DOOR_ID}/lock_rule" \
@@ -313,7 +313,7 @@ chmod +x /Users/Shared/unifi-main-gate-holdopen.sh
 cat > /Users/Shared/unifi-main-gate-release.sh << 'EOF'
 #!/bin/bash
 UNIFI_HOST="https://<SAVANT_HOST_IP>:12445"
-API_TOKEN="REDACTED_ROTATED_TOKEN"
+API_TOKEN="YOUR_UNIFI_API_TOKEN"
 DOOR_ID="<DOOR_ID>"
 SCLIBRIDGE="/Users/Shared/Savant/Applications/<PROFILE>/sclibridge"
 curl -k -sS -X PUT "${UNIFI_HOST}/api/v1/developer/doors/${DOOR_ID}/lock_rule" \
@@ -333,7 +333,7 @@ chmod +x /Users/Shared/unifi-main-gate-release.sh
 ```bash
 # Register webhook for all doorbell/intercom press events:
 curl -k -sS -X POST "https://<SAVANT_HOST_IP>:12445/api/v1/developer/webhooks" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{
@@ -343,11 +343,11 @@ curl -k -sS -X POST "https://<SAVANT_HOST_IP>:12445/api/v1/developer/webhooks" \
 
 # List registered webhooks:
 curl -k -sS -X GET "https://<SAVANT_HOST_IP>:12445/api/v1/developer/webhooks" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN"
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN"
 
 # Delete a webhook:
 curl -k -sS -X DELETE "https://<SAVANT_HOST_IP>:12445/api/v1/developer/webhooks/WEBHOOK_ID" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN"
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN"
 ```
 
 ---
@@ -357,21 +357,21 @@ curl -k -sS -X DELETE "https://<SAVANT_HOST_IP>:12445/api/v1/developer/webhooks/
 ```bash
 # Force-lock Main Gate (keep_lock):
 curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_ID>/lock_rule" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{"type":"keep_lock"}'
 
 # Force-lock Service Gate:
 curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_ID>/lock_rule" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{"type":"keep_lock"}'
 
 # Timed unlock (15 minutes then auto-lock):
 curl -k -sS -X PUT "https://<SAVANT_HOST_IP>:12445/api/v1/developer/doors/<DOOR_ID>/lock_rule" \
-  -H "Authorization: Bearer REDACTED_ROTATED_TOKEN" \
+  -H "Authorization: Bearer YOUR_UNIFI_API_TOKEN" \
   -H "accept: application/json" \
   -H "content-type: application/json" \
   -d '{"type":"custom","interval":15}'
